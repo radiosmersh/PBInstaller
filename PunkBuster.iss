@@ -15,7 +15,7 @@ OutputBaseFilename=pbsetup
 Uninstallable=no
 
 [Files]
-Source: "files\*.dll"; DestDir: "{app}"; Flags: ignoreversion 
+Source: "files\*.dll"; DestDir: "{app}"; Flags: ignoreversion; MinVersion: 6.1; Check: not UnderWine;
 Source: "files\pb\*.*"; DestDir: "{app}\pb"; Flags: ignoreversion recursesubdirs
 Source: "files\pbsvc.exe"; DestDir: "{tmp}"; Flags: ignoreversion
 Source: "files\PBClient.con"; DestDir: "{tmp}"; Flags: ignoreversion
@@ -91,3 +91,12 @@ begin
     Folders.Free;
 	end;
 end;
+
+
+function UnderWine:Boolean;
+    begin
+       if RegKeyExists(HKEY_LOCAL_MACHINE, 'Software\Wine\Wine\Config') then
+        Result := True
+       else
+        Result := False;
+    end;
