@@ -12,10 +12,9 @@ PrivilegesRequired=admin
 DirExistsWarning=No
 Compression=lzma2/max 
 OutputBaseFilename=pbsetup
-Uninstallable=no
 
 [Files]
-Source: "files\*.dll"; DestDir: "{app}"; Flags: ignoreversion; MinVersion: 6.1; Check: not UnderWine;
+Source: "files\*.dll"; DestDir: "{app}"; Flags: ignoreversion; MinVersion: 6.2; Check: not UnderWine;
 Source: "files\pb\*.*"; DestDir: "{app}\pb"; Flags: ignoreversion recursesubdirs
 Source: "files\pbsvc.exe"; DestDir: "{tmp}"; Flags: ignoreversion
 Source: "files\PBClient.con"; DestDir: "{tmp}"; Flags: ignoreversion
